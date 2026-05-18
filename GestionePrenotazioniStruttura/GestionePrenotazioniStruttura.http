@@ -1,0 +1,367 @@
+﻿@baseUrl = https://localhost:7063/api
+
+############################################
+### USERS
+############################################
+
+GET {{baseUrl}}/users
+
+###
+
+GET {{baseUrl}}/users/1
+
+###
+
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "Mario Rossi",
+  "email": "mario@example.com",
+  "phone": "123456789",
+  "role": "Customer"
+}
+
+###
+
+PUT {{baseUrl}}/users/1
+Content-Type: application/json
+
+{
+  "name": "Mario Rossi Updated",
+  "email": "mario@example.com",
+  "phone": "987654321",
+  "role": "Admin"
+}
+
+###
+
+DELETE {{baseUrl}}/users/1
+
+
+############################################
+### ROOMS
+############################################
+
+GET {{baseUrl}}/rooms
+
+###
+
+POST {{baseUrl}}/rooms
+Content-Type: application/json
+
+{
+  "name": "Sala B",
+  "capacity": 20,
+  "StructureId": 1
+}
+
+###
+
+GET {{baseUrl}}/rooms/1
+
+###
+
+PUT {{baseUrl}}/rooms/1
+Content-Type: application/json
+
+{
+  "name": "Sala A Updated",
+  "capacity": 30
+}
+
+###
+
+DELETE {{baseUrl}}/rooms/1
+
+
+############################################
+### BOOKINGS
+############################################
+
+GET {{baseUrl}}/bookings
+
+###
+
+GET {{baseUrl}}/bookings/1
+
+###
+
+GET {{baseUrl}}/bookings/room/1
+
+###
+
+POST {{baseUrl}}/bookings
+Content-Type: application/json
+
+{
+  "UserId": 2,
+  "RoomId": 6,
+  "StartTime": "2026-02-03T10:00:00",
+  "EndTime": "2026-02-03T11:00:00"
+}
+
+###
+
+DELETE {{baseUrl}}/bookings/1
+
+
+############################################
+### PAYMENTS
+############################################
+
+GET {{baseUrl}}/payment
+
+###
+
+POST {{baseUrl}}/Payment
+Content-Type: application/json
+
+{
+  "subscriptionId": 4,
+  "amount": 50.0,
+  "paymentDate": "2026-01-01T10:00:00",
+  "paymentMethod": "Credit Card"
+}
+
+###
+
+GET {{baseUrl}}/payments/1
+
+###
+
+PUT {{baseUrl}}/payments/1
+Content-Type: application/json
+
+{
+  "subscriptionId": 4,
+  "amount": 50.0,
+  "paymentDate": "2026-01-01T10:00:00",
+  "paymentMethod": "Credit Card"
+}
+
+###
+
+DELETE {{baseUrl}}/payments/1
+
+
+############################################
+### ACTIVITIES
+############################################
+
+GET {{baseUrl}}/Activity
+
+###
+
+POST {{baseUrl}}/activity
+Content-Type: application/json
+
+{
+  "Title": "yoga",
+  "description": "Morning yoga session",
+   "trainerIds": [13,14]
+}
+
+###
+
+GET {{baseUrl}}/activity/1
+
+###
+
+PUT {{baseUrl}}/activity/1
+Content-Type: application/json
+
+{
+  "title": "Yoga Advanced",
+  "description": "Advanced yoga"
+}
+
+###
+
+DELETE {{baseUrl}}/activity/1
+
+
+############################################
+### TRAINERS
+############################################
+
+GET {{baseUrl}}/trainer
+
+###
+
+POST {{baseUrl}}/trainer
+Content-Type: application/json
+
+{
+  "name": "trainer4"
+  
+}
+
+###
+
+GET {{baseUrl}}/trainer/5
+
+###
+
+PUT {{baseUrl}}/trainer/5
+Content-Type: application/json
+
+{
+  "name": "Luigi Trainer Updated"
+}
+
+###
+
+DELETE {{baseUrl}}/trainer/5
+
+
+############################################
+### STRUCTURES
+############################################
+
+GET {{baseUrl}}/structures
+
+###
+
+POST {{baseUrl}}/structures
+Content-Type: application/json
+
+{
+  "name": "Palestra Centrale",
+  "address": "Via Roma 10",
+  "description": "descrizione..."
+}
+
+###
+
+GET {{baseUrl}}/structures/1
+
+###
+
+PUT {{baseUrl}}/structures/1
+Content-Type: application/json
+
+{
+  "name": "Palestra Centrale Updated",
+  "address": "Via Milano 20",
+  "description": "descrizione edit..."
+}
+
+###
+
+DELETE {{baseUrl}}/structures/1
+
+
+############################################
+### SUBSCRIPTIONS
+############################################
+
+GET {{baseUrl}}/subscription
+
+###
+
+POST {{baseUrl}}/subscription
+Content-Type: application/json
+
+{
+  "name": "Abbonamento Gold",
+  "totalPrice": 150.0,
+  "durationInMonths": 3,
+  "activitiesIds": [5, 6, 7],    
+  "userId": 2,
+  "paymentId": 0                 
+}
+
+###
+
+GET {{baseUrl}}/subscription/1
+
+###
+
+PUT {{baseUrl}}/subscription/4
+Content-Type: application/json
+
+{
+   "name": "Abbonamento Gold edit",
+  "totalPrice": 190.0,
+  "durationInMonths": 3,
+  "activitiesIds": [5, 6, 7],    
+  "userId": 2,
+  "paymentId": 2            
+}
+
+###
+
+DELETE {{baseUrl}}/subscriptions/4
+
+
+### 1️⃣ Registrazione utente
+
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "Mario Rossi",
+  "email": "mario@mailnew4.it",
+  "password": "Password123"
+}
+
+### 2️⃣ Login utente
+### 2️⃣ Login utente
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "mario@mailnew4.it",
+  "password": "Password123"
+}
+
+
+### 3️⃣ Logout utente (opzionale)
+POST {{baseUrl}}/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI2IiwiZW1haWwiOiJtYXJpb0BtYWlsbmV3NC5pdCIsInJvbGUiOiIyIiwibmJmIjoxNzcwMjgzMTgxLCJleHAiOjE3NzAyODY3ODEsImlhdCI6MTc3MDI4MzE4MX0.h5CI-w-WRT3SFDKmNG70elNVKyIKgubBY2kiRteyeyc
+
+### 4️⃣ Esempio chiamata protetta: Get All Users
+GET {{baseUrl}}/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI2IiwiZW1haWwiOiJtYXJpb0BtYWlsbmV3NC5pdCIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDI4NTA0MSwiZXhwIjoxNzcwMjg4NjQxLCJpYXQiOjE3NzAyODUwNDF9.qkSLJINvI6GhVE2CDwmKGOcrYVpgAyy1T3b3EKwQId8
+@TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI2IiwiZW1haWwiOiJtYXJpb0BtYWlsbmV3NC5pdCIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDI5NTI0NSwiZXhwIjoxNzcwMjk4ODQ1LCJpYXQiOjE3NzAyOTUyNDUsImlzcyI6Ikdlc3Rpb25lUHJlbm90YXppb25pIiwiYXVkIjoiR2VzdGlvbmVQcmVub3RhemlvbmkifQ.o9F2D05ABXACBHqFZXU3FHWampQgLRkMBEo2CoRWOJo
+### 1) Login (ottieni access token)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "mario@mailnew4.it",
+  "password": "Password123"
+}
+
+###
+
+### 2) Chiamata protetta: Get all users (incolla qui l'access token restituito dal login)
+GET {{baseUrl}}/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI2IiwiZW1haWwiOiJtYXJpb0BtYWlsbmV3NC5pdCIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDMwMjQ0MSwiZXhwIjoxNzcwMzA2MDQxLCJpYXQiOjE3NzAzMDI0NDEsImlzcyI6Ikdlc3Rpb25lUHJlbm90YXppb25pIiwiYXVkIjoiR2VzdGlvbmVQcmVub3RhemlvbmkifQ.LdftjME1_AwJ4IQ9ij4sgd4oF8fS77NpYe27X08bnlA
+
+###
+
+### 3) Logout (invalida refresh token lato server)
+POST {{baseUrl}}/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI2IiwiZW1haWwiOiJtYXJpb0BtYWlsbmV3NC5pdCIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDMwMzMxMCwiZXhwIjoxNzcwMzA2OTEwLCJpYXQiOjE3NzAzMDMzMTAsImlzcyI6Ikdlc3Rpb25lUHJlbm90YXppb25pIiwiYXVkIjoiR2VzdGlvbmVQcmVub3RhemlvbmkifQ.ZiLWtlEPunygKyWraOZ-NIEIPvmwJIgL7olVqYpuLe4
+
+### 0) (OPZIONALE) Definisci qui il token dopo il login
+# @TOKEN = eyJ...     <-- incolla qui il Token restituito da /auth/login
+
+### 1) Login (ottieni access token)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "mario@mailnew4.it",
+  "password": "Password123"
+}
+
+###
+
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI2IiwiZW1haWwiOiJtYXJpb0BtYWlsbmV3NC5pdCIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDMwMzU1MSwiZXhwIjoxNzcwMzA3MTUxLCJpYXQiOjE3NzAzMDM1NTEsImlzcyI6Ikdlc3Rpb25lUHJlbm90YXppb25pIiwiYXVkIjoiR2VzdGlvbmVQcmVub3RhemlvbmkifQ.WhFbzarWbsJn4mGJF-8y1RDYkTlu4Txbg4yOV-FMPLA
+
+POST https://localhost:7063/api/auth/logout
+Authorization: Bearer {{token}}

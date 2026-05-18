@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="GestionePrenotazioniStruttura.Tests/GestionePrenotazioniStruttura.Tests.csproj" />
+  <Project Path="GestionePrenotazioniStruttura/GestionePrenotazioniStruttura.csproj" />
+</Solution>

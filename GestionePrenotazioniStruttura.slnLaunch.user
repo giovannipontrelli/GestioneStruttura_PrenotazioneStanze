@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Nuovo profilo",
+    "Projects": [
+      {
+        "Path": "GestionePrenotazioniStruttura\\GestionePrenotazioniStruttura.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "GestionePrenotazioniStruttura.Web\\GestionePrenotazioniStruttura.Web.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
